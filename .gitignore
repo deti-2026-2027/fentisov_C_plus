@@ -1,0 +1,14 @@
+.DS_Store
+
+.idea/
+cmake-build-*/
+а
+build/
+out/
+bin/
+*.o
+*.obj
+*.a
+*.out
+*.exe
+*.dSYM/
