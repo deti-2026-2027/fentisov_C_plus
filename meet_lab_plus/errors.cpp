@@ -3,7 +3,7 @@
 
 void Errors::printHelp() {
 	std::cout << "Usage: word_count.exe input.txt output.csv" << std::endl;
-	std::cout << "Description:" << std::endl;
+	std::cout << "Description of app:" << std::endl;
 	std::cout << "  Counts word frequencies in input file" << std::endl;
 	std::cout << "  and writes a CSV to output file with columns:" << std::endl;
 	std::cout << "  Word, Frequency, Frequency %. Sorting by descending frequency" << std::endl;
