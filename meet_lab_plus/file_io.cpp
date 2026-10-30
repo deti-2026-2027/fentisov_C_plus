@@ -1,14 +1,15 @@
 #include <fstream>
 #include "file_io.h"
 
-ErrorCode FileIO::readFile(const std::string &fileName, std::list<std::string> &lines) {
+
+ErrorCode FileIO::readFile(const std::string &fileName, WordCounter &counter) {
 	std::ifstream input_file(fileName.c_str());
 	if (!input_file.is_open()) {
 		return error_file_not_found;
 	}
 	std::string line;
 	while (std::getline(input_file, line)) {
-		lines.push_back(line);
+		counter.addLine(line);
 	}
 
 	if (!input_file.eof()) {
@@ -17,7 +18,7 @@ ErrorCode FileIO::readFile(const std::string &fileName, std::list<std::string> &
 	}
 	input_file.close();
 
-	if (lines.empty()) {
+	if (counter.isEmpty()) {
 		return error_empty_input;
 	}
 	return success;

@@ -2,9 +2,8 @@
 #include <string>
 #include <list>
 #include "errors.h"
-#include "structures.h"
 #include "file_io.h"
-#include "utils.h"
+#include "word_counter.h"
 
 int main(int argc, char *argv[]) {
 	if (argc < 3) {
@@ -19,26 +18,16 @@ int main(int argc, char *argv[]) {
 	WordCounter counter;
 
 	// читаем файл
-	std::list<std::string> lines;
-	ErrorCode err = fileIO.readFile(inputFile, lines);
+	ErrorCode err = fileIO.readFile(inputFile, counter);
 	if (err != success) {
 		Errors::printError(err);
 		return err;
 	}
-
-	// считаем слова
-	WordList wordList;
-	err = counter.countWords(lines, wordList);
-	if (err != success) {
-		Errors::printError(err);
-		return err;
-	}
-
-	// сортируем по частоте
-	std::list<std::pair<std::string, int> > sortedWords = counter.sortByFreq(wordList);
+	//получаем список отсортированных слов
+	std::list<std::pair<std::string, int> > sortedWords = counter.getSortedWords();
 
 	// записываем в csv
-	err = fileIO.writeCsv(outputFile, sortedWords, wordList.getTotalCount());
+	err = fileIO.writeCsv(outputFile, sortedWords, counter.getTotalCount());
 	if (err != success) {
 		Errors::printError(err);
 		return err;
