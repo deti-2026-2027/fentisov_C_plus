@@ -1,0 +1,6 @@
+The quick brown fox jumps over the lazy dog.
+The dog barks, the fox runs away!
+Fox, fox, FOX... and 42 foxes; 42 dogs?
+test_1 test-2 test3
+
+dog dog dog dog dog dog

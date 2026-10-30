@@ -1,0 +1,6 @@
+cmake-build-debug/
+.idea/
+word_count
+*.o
+output.csv
+.DS_Store
