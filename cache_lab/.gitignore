@@ -1,0 +1,8 @@
+cmake-build-*/
+build/
+build_*/
+.idea/
+*.o
+.DS_Store
+cache_app
+cache_tests
