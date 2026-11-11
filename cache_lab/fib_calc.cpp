@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include "fib_calc.h"
+#include <cctype>
 
 FibonacciCalculator::FibonacciCalculator(ICache &usedCache) : cache(usedCache) {
     hits = 0;
@@ -22,18 +23,16 @@ unsigned long long FibonacciCalculator::computeFibonacci(int n) {
 }
 
 bool FibonacciCalculator::isNumber(const std::string &text) {
-    // строку длиннее 9 символов не проверяем, т.к n всё равно не больше 93
-    if (text.empty() || text.length() > 9) {
+    if (text.empty() || text.length() > 2) {
         return false;
     }
     for (std::size_t i = 0; i < text.length(); i++) {
-        if (text[i] < '0' || text[i] > '9') {
+        if (!std::isdigit(static_cast<unsigned char>(text[i]))) {
             return false;
         }
     }
     return true;
 }
-
 
 unsigned long long FibonacciCalculator::calculate(int n, bool &fromCache) {
     if (n < 0 || n > MAX_N) {
